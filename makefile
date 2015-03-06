@@ -1,6 +1,9 @@
 cc=mpicc
 flags=-lrt -lm
 
+
+all: jacobi-mpi int_ring
+
 jacobi-mpi: jacobi-mpi.c
 	$(cc) $(flags) jacobi-mpi.c -o jacobi-mpi
 
