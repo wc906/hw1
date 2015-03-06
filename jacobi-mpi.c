@@ -15,8 +15,8 @@ int main(int argc, char ** argv)
   int mpisize,mpirank,N,i,iter,MaxIter,my_n;
   double h,aij,aii,my_residue,residue,residue0,uTop,uBot,uTemp;
   double *uOld,*uNew;
-  //timestamp_type time1,time2;
-  double time1,time2;
+  timestamp_type time1,time2;
+  // double time1,time2;
   MPI_Init(&argc,&argv);
   MPI_Comm_size(MPI_COMM_WORLD, &mpisize);
   MPI_Comm_rank(MPI_COMM_WORLD, &mpirank);
@@ -57,9 +57,9 @@ int main(int argc, char ** argv)
     uNew[i]=0.;
   }
 
-  //get_timestamp(&time1);
+  get_timestamp(&time1);
   iter=0;
-  time1=MPI_Wtime();
+  //time1=MPI_Wtime();
 
   //clock_t t;
   //t=clock();
@@ -150,15 +150,15 @@ int main(int argc, char ** argv)
 
   }while(residue>residue0*0.000001 && iter<MaxIter);
 
-  //get_timestamp(&time2);
+  get_timestamp(&time2);
   //t=clock()-t;
 
-  time2=MPI_Wtime();
+  //time2=MPI_Wtime();
 
 
-  //double elapsed = timestamp_diff_in_seconds(time1,time2);
+  double elapsed = timestamp_diff_in_seconds(time1,time2);
   //double elapsed=(double) t/CLOCKS_PER_SEC;
-  double elapsed=time2-time1;
+  //double elapsed=time2-time1;
   if(mpirank==0){
     printf("Time elapsed is %f seconds.\n",elapsed);
   }
