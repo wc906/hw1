@@ -108,7 +108,7 @@ int main(int argc, char ** argv)
    
 }
   
-  /*
+  // calculate residual
   if(mpirank==0){
     my_residue=(uNew[0]*aii+uNew[1]*aij-1)*(uNew[0]*aii+uNew[1]*aij-1);
     for(i=1;i<my_n-1;i++){
@@ -137,7 +137,7 @@ int main(int argc, char ** argv)
     residue=sqrt(residue);
    
 }
-  */
+  
   iter++;
 
 
@@ -161,6 +161,7 @@ int main(int argc, char ** argv)
   //double elapsed=time2-time1;
   if(mpirank==0){
     printf("Time elapsed is %f seconds.\n",elapsed);
+    printf("Last residual: %f\n",residue);
   }
 
 
