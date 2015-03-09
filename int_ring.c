@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
    
     MPI_Recv(&message, 1, MPI_INT, (rank-1+size)%size, i, MPI_COMM_WORLD, &status);
     message=message+rank;
-    printf("Rank %d hosted on %s,the %d try, message received is %d\n",rank,hostname,i+1,message);
+    //printf("Rank %d hosted on %s,the %d try, message received is %d\n",rank,hostname,i+1,message);
 
     //printf("Message from %d\n",(rank-1+size)%size);
     //printf("Message to %d\n",(rank+1)%size);
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
   if(rank==0){
     printf("Last message is %d\n",message);
     printf("Total elapsed time is %f seconds\n",elapsed);
-    printf("Average time for single communication: %f seconds\n",singleCommunicationTime);
+    printf("Average time for single communication: %.12f seconds\n",singleCommunicationTime);
 }
 
   return 0;
